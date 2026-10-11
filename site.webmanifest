@@ -1,0 +1,12 @@
+{
+  "name": "Denta Genesis · Clínica dental en La Orotava",
+  "short_name": "Denta Genesis",
+  "icons": [
+    {"src": "img/icon-192.png", "sizes": "192x192", "type": "image/png"},
+    {"src": "img/icon-512.png", "sizes": "512x512", "type": "image/png"}
+  ],
+  "theme_color": "#072a24",
+  "background_color": "#072a24",
+  "display": "standalone",
+  "start_url": "./"
+}
