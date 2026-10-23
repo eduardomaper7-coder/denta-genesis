@@ -87,8 +87,6 @@
   var form = document.getElementById("form");
   var msg = document.getElementById("formMsg");
   if (form) {
-    var btn = form.querySelector("button[type=submit]");
-    var btnText = btn ? btn.textContent : "";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var ok = true;
@@ -114,29 +112,33 @@
       };
       if (d.get("email")) datos._replyto = d.get("email");
 
-      if (btn) { btn.disabled = true; btn.textContent = "Enviando…"; }
-      msg.className = "form__msg"; msg.textContent = "";
+      // Respuesta inmediata: FormSubmit tarda en contestar, así que el envío sigue en segundo plano
+      var copia = {};
+      form.querySelectorAll("input, select, textarea").forEach(function (f) {
+        if (f.name) copia[f.name] = f.type === "checkbox" ? f.checked : f.value;
+      });
+      form.reset();
+      msg.className = "form__msg is-ok";
+      msg.textContent = "¡Gracias! Hemos recibido tu solicitud y te llamaremos lo antes posible.";
 
       fetch("https://formsubmit.co/ajax/" + EMAIL_CLINICA, {
         method: "POST",
+        keepalive: true,
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
         body: JSON.stringify(datos)
       })
         .then(function (r) { return r.json(); })
         .then(function (res) {
-          if (res && String(res.success) === "true") {
-            form.reset();
-            msg.className = "form__msg is-ok";
-            msg.textContent = "¡Gracias! Hemos recibido tu solicitud y te llamaremos lo antes posible.";
-          } else {
-            throw new Error(res && res.message);
-          }
+          if (!res || String(res.success) !== "true") throw new Error(res && res.message);
         })
         .catch(function () {
+          // Si falla, devolvemos los datos al formulario y avisamos
+          form.querySelectorAll("input, select, textarea").forEach(function (f) {
+            if (f.name && f.name in copia) { if (f.type === "checkbox") f.checked = copia[f.name]; else f.value = copia[f.name]; }
+          });
           msg.className = "form__msg is-error";
-          msg.innerHTML = "No se ha podido enviar. Llámanos al <a href=\"tel:+34822646609\">822 646 609</a> o al <a href=\"tel:+34641314797\">641 314 797</a>.";
-        })
-        .then(function () { if (btn) { btn.disabled = false; btn.textContent = btnText; } });
+          msg.innerHTML = "No se ha podido enviar. Inténtalo de nuevo o llámanos al <a href=\"tel:+34822646609\">822 646 609</a> o al <a href=\"tel:+34641314797\">641 314 797</a>.";
+        });
     });
   }
 })();
