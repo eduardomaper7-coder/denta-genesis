@@ -10,7 +10,7 @@ Abre `index.html` con doble clic para verla en el navegador.
 | radiologia.jpg | Sin usar (equipo de radiología) |
 | clinica-slide-1…4.jpg | La clínica: fotos que rotan (sala de espera, 2 gabinetes, pasillo) |
 | clinica-1/2/3.jpg | Sin usar (versión anterior) |
-| dr-joseph-cesares.jpg, dr-doctor-2.jpg | Sección "Nuestro equipo" y páginas de cada doctor |
+| dr-joseph-cesares.jpg, alejandro-viloria.jpg | Sección "Nuestro equipo" y páginas de cada doctor |
 | equipo-1.jpg | Sin usar (versión anterior) |
 | recorrido-1…6.jpg | Carrusel "Instalaciones" (fachada, gabinetes, pasillo, cristalera) |
 
@@ -20,8 +20,8 @@ Para cambiar una foto, sustituye el archivo manteniendo el nombre.
 - Teléfonos ya puestos: fijo 822 646 609 y móvil 641 314 797 (sacados del rótulo)
 - Email: `info@dentagenesis.es`
 - Dominio: `https://www.dentagenesis.es` (también en robots.txt y sitemap.xml)
-- Horario: lunes a viernes 9:00–14:00 · 16:00–20:00 (también en el bloque JSON-LD de index.html)
-- Segundo doctor: nombre, especialidad y CV → tarjeta en index.html (sección #equipo) y página dr-doctor-2.html (todo lo marcado en verde). Al tener el nombre, renombrar el archivo (p. ej. dr-nombre-apellido.html), cambiar el enlace de la tarjeta y añadirlo a sitemap.xml.
+- Horario (ya puesto): L, M, X y V 9:00–17:00 · J 11:00–19:00 (también en el bloque JSON-LD de index.html). Debe coincidir con la ficha de Google.
+- Alejandro Viloria: revisar su página alejandro-viloria.html (la segunda cita entre comillas y los "pasos" son textos propuestos).
 - Dr. Joseph Cesares: revisar su página dr-joseph-cesares.html (la cita entre comillas es un texto propuesto) y confirmar el nº de colegiado vigente en Tenerife.
 - Páginas legales: razón social, CIF, nº de registro sanitario (marcados en verde)
 - Revisar que las afirmaciones (financiación, carga inmediata, ortodoncia invisible…) coinciden con lo que ofrece la clínica.

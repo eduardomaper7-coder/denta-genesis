@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css?v=6">
+  <link rel="stylesheet" href="css/styles.css?v=8">
 
   <!-- ===== Datos estructurados (Google) ===== -->
   <script type="application/ld+json">
@@ -67,9 +67,15 @@
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+        "dayOfWeek": ["Monday","Tuesday","Wednesday","Friday"],
         "opens": "09:00",
-        "closes": "20:00"
+        "closes": "17:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Thursday",
+        "opens": "11:00",
+        "closes": "19:00"
       }
     ],
     "areaServed": [
@@ -359,12 +365,12 @@
         <div class="section__head section__head--center">
           <p class="eyebrow">Nuestro equipo</p>
           <h2 id="equipo-title">Tu sonrisa, en manos expertas</h2>
-          <p>Cirugía oral e implantología con años de experiencia y una atención personal, de la primera visita a la última revisión.</p>
+          <p>Experiencia clínica en cirugía e implantes y una atención cercana que te acompaña de la primera visita a la última revisión.</p>
         </div>
 
         <div class="team2__grid">
           <a class="dr-card" href="dr-joseph-cesares.html">
-            <figure class="dr-card__photo"><img src="img/fotos/dr-joseph-cesares.jpg" style="object-position:38% 50%" alt="Dr. Joseph Cesares Márquez, cirujano oral e implantólogo de Denta Genesis" width="960" height="1200" loading="lazy" decoding="async"></figure>
+            <figure class="dr-card__photo"><img src="img/fotos/dr-joseph-cesares-card.jpg" alt="Dr. Joseph Cesares Márquez, cirujano oral e implantólogo de Denta Genesis" width="1200" height="960" loading="lazy" decoding="async"></figure>
             <div class="dr-card__body">
               <p class="dr-card__role">Cirugía oral e implantología</p>
               <h3>Dr. Joseph Cesares Márquez</h3>
@@ -374,19 +380,16 @@
             </div>
           </a>
 
-          <!-- SEGUNDO DOCTOR (oculto hasta tener sus datos; para mostrarlo, quitar los comentarios)
-          
-          <a class="dr-card" href="dr-doctor-2.html">
-            <figure class="dr-card__photo"><img src="img/fotos/dr-doctor-2.jpg" style="object-position:30% 50%" alt="Doctor de Denta Genesis en la recepción de la clínica" width="960" height="1200" loading="lazy" decoding="async"></figure>
+          <a class="dr-card" href="alejandro-viloria.html">
+            <figure class="dr-card__photo"><img src="img/fotos/alejandro-viloria-card.jpg" alt="Alejandro Viloria Abreu, director y responsable de atención al paciente de Denta Genesis" width="1200" height="960" loading="lazy" decoding="async"></figure>
             <div class="dr-card__body">
-              <p class="dr-card__role">Especialidad pendiente</p>
-              <h3>Dr. Nombre Apellido</h3>
-              <p class="dr-card__text">Breve presentación del doctor: experiencia, formación principal y tratamientos en los que está especializado.</p>
-              <ul class="dr-card__tags"><li>Años de experiencia</li><li>Especialidad</li></ul>
+              <p class="dr-card__role">Dirección y atención al paciente</p>
+              <h3>Alejandro Viloria Abreu</h3>
+              <p class="dr-card__text">Más de 8 años dirigiendo y asesorando clínicas dentales. Te recibe, te explica tu presupuesto y te acompaña durante todo el tratamiento.</p>
+              <ul class="dr-card__tags"><li>+8 años</li><li>Atención al paciente</li><li>Financiación</li></ul>
               <span class="dr-card__link">Ver perfil completo <span aria-hidden="true">→</span></span>
             </div>
           </a>
-          -->
         </div>
       </div>
     </section>
@@ -481,7 +484,7 @@
             </div>
             <div>
               <h3>Horario</h3>
-              <p>Lunes a viernes<br>9:00 – 14:00 · 16:00 – 20:00</p>
+              <p>Lunes, martes, miércoles y viernes<br>9:00 – 17:00<br>Jueves<br>11:00 – 19:00</p>
             </div>
           </address>
 
