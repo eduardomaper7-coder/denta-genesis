@@ -83,10 +83,12 @@
     });
   }
 
-  // Formulario: validación y envío por email (sin servidor)
+  // Formulario: envío directo al email de la clínica con FormSubmit (formsubmit.co)
   var form = document.getElementById("form");
   var msg = document.getElementById("formMsg");
   if (form) {
+    var btn = form.querySelector("button[type=submit]");
+    var btnText = btn ? btn.textContent : "";
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var ok = true;
@@ -95,20 +97,46 @@
         f.classList.toggle("is-invalid", !valid);
         if (!valid) ok = false;
       });
-      if (!ok) { msg.textContent = "Revisa los campos obligatorios y acepta la política de privacidad."; return; }
+      if (!ok) { msg.className = "form__msg is-error"; msg.textContent = "Revisa los campos obligatorios y acepta la política de privacidad."; return; }
 
       var d = new FormData(form);
-      var body =
-        "Nombre: " + d.get("nombre") + "\n" +
-        "Teléfono: " + d.get("telefono") + "\n" +
-        "Email: " + (d.get("email") || "-") + "\n" +
-        "Tratamiento: " + d.get("tratamiento") + "\n\n" +
-        (d.get("mensaje") || "");
-      window.location.href = "mailto:" + EMAIL_CLINICA +
-        "?subject=" + encodeURIComponent("Solicitud de cita web - " + d.get("nombre")) +
-        "&body=" + encodeURIComponent(body);
-      msg.textContent = "¡Gracias! Se abrirá tu correo para enviar la solicitud. Te contactaremos lo antes posible.";
-      form.reset();
+      if (d.get("_honey")) return; // robot de spam: no enviar
+
+      var datos = {
+        "Nombre": d.get("nombre"),
+        "Teléfono": d.get("telefono"),
+        "Email": d.get("email") || "-",
+        "Tratamiento": d.get("tratamiento"),
+        "Mensaje": d.get("mensaje") || "-",
+        "_subject": "Nueva solicitud de cita web - " + d.get("nombre"),
+        "_template": "table",
+        "_captcha": "false"
+      };
+      if (d.get("email")) datos._replyto = d.get("email");
+
+      if (btn) { btn.disabled = true; btn.textContent = "Enviando…"; }
+      msg.className = "form__msg"; msg.textContent = "";
+
+      fetch("https://formsubmit.co/ajax/" + EMAIL_CLINICA, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(datos)
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (res && String(res.success) === "true") {
+            form.reset();
+            msg.className = "form__msg is-ok";
+            msg.textContent = "¡Gracias! Hemos recibido tu solicitud y te llamaremos lo antes posible.";
+          } else {
+            throw new Error(res && res.message);
+          }
+        })
+        .catch(function () {
+          msg.className = "form__msg is-error";
+          msg.innerHTML = "No se ha podido enviar. Llámanos al <a href=\"tel:+34822646609\">822 646 609</a> o al <a href=\"tel:+34641314797\">641 314 797</a>.";
+        })
+        .then(function () { if (btn) { btn.disabled = false; btn.textContent = btnText; } });
     });
   }
 })();

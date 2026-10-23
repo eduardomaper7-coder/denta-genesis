@@ -539,3 +539,10 @@ p { margin: 0 0 1em; }
   .dr-card__photo img { object-position: 50% 40%; }
   .dr-card__body { padding: 32px 36px 36px; justify-content: flex-start; }
 }
+
+/* Formulario: antispam y mensajes */
+.form__honey { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; opacity: 0; }
+.form__msg.is-ok { color: var(--teal); font-weight: 500; }
+.form__msg.is-error { color: #c4553f; }
+.form__msg a { color: inherit; font-weight: 600; }
+.form button[disabled] { opacity: .7; cursor: wait; transform: none; }
