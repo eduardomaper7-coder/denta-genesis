@@ -7,4 +7,5 @@
     <priority>1.0</priority>
     <image:image><image:loc>https://www.dentagenesis.es/img/og-denta-genesis.jpg</image:loc></image:image>
   </url>
+  <url><loc>https://www.dentagenesis.es/dr-joseph-cesares.html</loc><priority>0.7</priority></url>
 </urlset>

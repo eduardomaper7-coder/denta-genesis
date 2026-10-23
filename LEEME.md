@@ -2,26 +2,27 @@
 
 Abre `index.html` con doble clic para verla en el navegador.
 
-## Fotos
-Guarda las fotos en `img/fotos/` con estos nombres exactos y aparecerán solas en su sitio:
+## Fotos (ya incluidas en `img/fotos/`, recortadas y comprimidas)
+| Archivo | Dónde sale |
+|---|---|
+| hero.jpg | Portada (pared de recepción con el logo) |
+| implantes-gabinete.jpg | Sección implantes (gabinete) |
+| radiologia.jpg | Sin usar (equipo de radiología) |
+| clinica-slide-1…4.jpg | La clínica: fotos que rotan (sala de espera, 2 gabinetes, pasillo) |
+| clinica-1/2/3.jpg | Sin usar (versión anterior) |
+| dr-joseph-cesares.jpg, dr-doctor-2.jpg | Sección "Nuestro equipo" y páginas de cada doctor |
+| equipo-1.jpg | Sin usar (versión anterior) |
+| recorrido-1…6.jpg | Carrusel "Instalaciones" (fachada, gabinetes, pasillo, cristalera) |
 
-| Archivo | Dónde sale | Tamaño recomendado |
-|---|---|---|
-| hero.jpg | Portada (vertical) | 1200×1400 |
-| implantes.jpg | Sección implantes | 1000×1200 |
-| clinica-1.jpg | Recepción / fachada | 1200×900 |
-| clinica-2.jpg | Gabinete | 900×900 |
-| clinica-3.jpg | Detalle de la clínica | 900×900 |
-| equipo-1.jpg, equipo-2.jpg, equipo-3.jpg | Equipo | 800×1000 |
-
-Comprímelas antes (por ejemplo en squoosh.app), idealmente menos de 300 KB cada una.
+Para cambiar una foto, sustituye el archivo manteniendo el nombre.
 
 ## Datos PENDIENTES (buscar y reemplazar en todos los .html)
-- Teléfono: `922 000 000` y `+34922000000`
+- Teléfonos ya puestos: fijo 822 646 609 y móvil 641 314 797 (sacados del rótulo)
 - Email: `info@dentagenesis.es`
 - Dominio: `https://www.dentagenesis.es` (también en robots.txt y sitemap.xml)
 - Horario: lunes a viernes 9:00–14:00 · 16:00–20:00 (también en el bloque JSON-LD de index.html)
-- Equipo: nombres y nº de colegiado
+- Segundo doctor: nombre, especialidad y CV → tarjeta en index.html (sección #equipo) y página dr-doctor-2.html (todo lo marcado en verde). Al tener el nombre, renombrar el archivo (p. ej. dr-nombre-apellido.html), cambiar el enlace de la tarjeta y añadirlo a sitemap.xml.
+- Dr. Joseph Cesares: revisar su página dr-joseph-cesares.html (la cita entre comillas es un texto propuesto) y confirmar el nº de colegiado vigente en Tenerife.
 - Páginas legales: razón social, CIF, nº de registro sanitario (marcados en verde)
 - Revisar que las afirmaciones (financiación, carga inmediata, ortodoncia invisible…) coinciden con lo que ofrece la clínica.
 

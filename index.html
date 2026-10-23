@@ -36,7 +36,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=5">
 
   <!-- ===== Datos estructurados (Google) ===== -->
   <script type="application/ld+json">
@@ -50,7 +50,7 @@
     "url": "https://www.dentagenesis.es/",
     "logo": "https://www.dentagenesis.es/img/logo-dg-oscuro.png",
     "image": "https://www.dentagenesis.es/img/og-denta-genesis.jpg",
-    "telephone": "+34922000000",
+    "telephone": "+34822646609",
     "email": "info@dentagenesis.es",
     "priceRange": "€€",
     "currenciesAccepted": "EUR",
@@ -62,7 +62,8 @@
       "postalCode": "38300",
       "addressCountry": "ES"
     },
-    "hasMap": "https://www.google.com/maps/search/?api=1&query=Av.+Mayorazgo+de+Franchi+16+38300+La+Orotava",
+    "hasMap": "https://maps.google.com/?cid=14271333826515810996",
+    "geo": {"@type": "GeoCoordinates", "latitude": 28.3936367, "longitude": -16.5281488},
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -92,7 +93,7 @@
       {"@type": "MedicalProcedure", "name": "Endodoncia"},
       {"@type": "MedicalProcedure", "name": "Odontología general e higiene dental"}
     ],
-    "sameAs": []
+    "sameAs": ["https://maps.google.com/?cid=14271333826515810996"]
   }
   </script>
   <script type="application/ld+json">
@@ -145,14 +146,16 @@
         <a href="#implantes">Implantes</a>
         <a href="#tratamientos">Tratamientos</a>
         <a href="#clinica">La clínica</a>
+        <a href="#equipo">Equipo</a>
+        <a href="#instalaciones">Instalaciones</a>
         <a href="#preguntas">Preguntas</a>
         <a href="#contacto">Contacto</a>
         <a href="#contacto" class="btn btn--mint nav__cta">Pedir cita</a>
       </nav>
 
-      <a href="tel:+34922000000" class="header__phone" aria-label="Llamar a Denta Genesis">
+      <a href="tel:+34822646609" class="header__phone" aria-label="Llamar a Denta Genesis">
         <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
-        <span>922 000 000</span>
+        <span>822 646 609</span>
       </a>
 
       <button class="burger" id="burger" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav">
@@ -182,10 +185,15 @@
           </ul>
         </div>
 
-        <!-- FOTO: hero.jpg (recomendado 1200×1400, vertical) — doctor/a con paciente o sonrisa -->
-        <figure class="ph ph--hero" data-foto="hero.jpg"><img src="img/fotos/hero.jpg" alt="Dentista de Denta Genesis atendiendo a un paciente en la clínica dental de La Orotava" width="1200" height="1400" fetchpriority="high" decoding="async" onerror="this.remove()">
-          <span>Foto principal<br><small>hero.jpg · 1200×1400</small></span>
-        </figure>
+        <!-- FOTO: hero.jpg — pared de recepción con el logotipo -->
+        <div class="hero__media">
+          <figure class="ph ph--hero" data-foto="hero.jpg"><img src="img/fotos/hero.jpg?v=2" alt="Recepción de la clínica dental Denta Genesis en La Orotava, con el logotipo en la pared de madera" width="1200" height="1400" fetchpriority="high" decoding="async" onerror="this.remove()">
+          </figure>
+          <div class="hero__badge">
+            <img src="img/logo-dg-claro.png" alt="" width="44" height="25" aria-hidden="true">
+            <p><strong>Especialistas en implantes</strong><span>Clínica dental · La Orotava</span></p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -199,9 +207,9 @@
         </div>
 
         <div class="impl">
-          <!-- FOTO: implantes.jpg (recomendado 1000×1200) — implante, cirugía o radiografía 3D -->
-          <figure class="ph ph--tall" data-foto="implantes.jpg"><img src="img/fotos/implantes.jpg" alt="Tratamiento de implantes dentales en Denta Genesis, La Orotava (Tenerife)" width="1000" height="1200" loading="lazy" decoding="async" onerror="this.remove()">
-            <span>Foto implantes<br><small>implantes.jpg · 1000×1200</small></span>
+          <!-- FOTO: implantes-gabinete.jpg — gabinete dental -->
+          <figure class="ph ph--tall" data-foto="implantes-gabinete.jpg"><img src="img/fotos/implantes-gabinete.jpg" alt="Gabinete dental de Denta Genesis en La Orotava donde se realizan los tratamientos de implantes" width="1000" height="1200" loading="lazy" decoding="async" onerror="this.remove()">
+            <figcaption class="chip">Gabinetes con equipamiento actual</figcaption>
           </figure>
 
           <div class="impl__list">
@@ -277,7 +285,7 @@
 
         <div class="cards">
           <article class="card">
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c-4 0-6 2-9 2s-6-1-8 2c-3 5 1 12 2 18 1 5 1 14 5 14 3 0 3-9 6-12 1-1 3-1 4 0 3 3 3 12 6 12 4 0 4-9 5-14 1-6 5-13 2-18-2-3-5-2-8-2s-5-2-9-2z"/></svg>
+            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M5 13c5-7 33-7 38 0"/><path d="M9.5 13h13v19a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5zM25.5 13h13v19a5 5 0 0 1-5 5h-3a5 5 0 0 1-5-5z"/><path d="M29.5 18v6M13.5 18v6"/></svg>
             <h3>Estética dental</h3>
             <p>Carillas, blanqueamiento y diseño de sonrisa para un resultado armonioso y natural.</p>
           </article>
@@ -287,7 +295,7 @@
             <p>Alineadores transparentes y removibles para corregir la posición de tus dientes con discreción.</p>
           </article>
           <article class="card">
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M8 18c4-6 28-6 32 0M14 18v6c0 8 4 16 10 16s10-8 10-16v-6M24 26v8"/></svg>
+            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c-4 0-6 2-9 2s-6-1-8 2c-3 5 1 12 2 18 1 5 1 14 5 14 3 0 3-9 6-12 1-1 3-1 4 0 3 3 3 12 6 12 4 0 4-9 5-14 1-6 5-13 2-18-2-3-5-2-8-2s-5-2-9-2z"/></svg>
             <h3>Periodoncia</h3>
             <p>Tratamiento de encías sangrantes, gingivitis y periodontitis para conservar tus dientes.</p>
           </article>
@@ -297,7 +305,7 @@
             <p>Tratamiento de conductos para salvar dientes dañados o con dolor, de forma cómoda.</p>
           </article>
           <article class="card">
-            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><path d="M10 38 30 18M26 14l8 8M30 10l8 8M34 6l8 8"/></svg>
+            <svg class="card__icon" viewBox="0 0 48 48" aria-hidden="true"><g transform="rotate(-35 24 24)"><rect x="1" y="27" width="28" height="6" rx="3"/><path d="M29 30h14a3 3 0 0 0 0-6H32a3 3 0 0 0-3 3z"/><path d="M32 24v-8M35.7 24v-8M39.4 24v-8M43 24v-7"/></g></svg>
             <h3>Higiene y prevención</h3>
             <p>Limpiezas profesionales y revisiones periódicas: la base de una boca sana.</p>
           </article>
@@ -327,35 +335,88 @@
             </ul>
           </div>
 
-          <div class="gallery">
-            <!-- FOTOS de la clínica: clinica-1.jpg (fachada/recepción), clinica-2.jpg (gabinete), clinica-3.jpg (detalle) -->
-            <figure class="ph ph--g1" data-foto="clinica-1.jpg"><img src="img/fotos/clinica-1.jpg" alt="Recepción de la clínica dental Denta Genesis en el Edificio Montymar, La Orotava" width="1200" height="900" loading="lazy" decoding="async" onerror="this.remove()"><span>Recepción / fachada<br><small>clinica-1.jpg · 1200×900</small></span></figure>
-            <figure class="ph ph--g2" data-foto="clinica-2.jpg"><img src="img/fotos/clinica-2.jpg" alt="Gabinete dental de Denta Genesis" width="900" height="900" loading="lazy" decoding="async" onerror="this.remove()"><span>Gabinete<br><small>clinica-2.jpg · 900×900</small></span></figure>
-            <figure class="ph ph--g3" data-foto="clinica-3.jpg"><img src="img/fotos/clinica-3.jpg" alt="Instalaciones de la clínica dental Denta Genesis" width="900" height="900" loading="lazy" decoding="async" onerror="this.remove()"><span>Detalle<br><small>clinica-3.jpg · 900×900</small></span></figure>
+          <!-- Fotos de la clínica en rotación: img/fotos/clinica-slide-1..4.jpg -->
+          <div class="slider" id="slider" aria-roledescription="carrusel" aria-label="Fotos de la clínica Denta Genesis">
+            <figure class="slider__slide is-active"><img src="img/fotos/clinica-slide-1.jpg" alt="Sala de espera de la clínica dental Denta Genesis en La Orotava" width="960" height="1200" loading="lazy" decoding="async"><figcaption>Sala de espera</figcaption></figure>
+            <figure class="slider__slide"><img src="img/fotos/clinica-slide-2.jpg" alt="Gabinete dental de Denta Genesis con sillón y equipo" width="960" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete</figcaption></figure>
+            <figure class="slider__slide"><img src="img/fotos/clinica-slide-3.jpg" alt="Gabinete dental equipado de Denta Genesis" width="960" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete</figcaption></figure>
+            <figure class="slider__slide"><img src="img/fotos/clinica-slide-4.jpg" alt="Pasillo de la clínica Denta Genesis" width="960" height="1200" loading="lazy" decoding="async"><figcaption>Zona de gabinetes</figcaption></figure>
+            <div class="slider__dots" role="tablist" aria-label="Elegir foto">
+              <button type="button" class="is-active" aria-label="Foto 1"></button>
+              <button type="button" aria-label="Foto 2"></button>
+              <button type="button" aria-label="Foto 3"></button>
+              <button type="button" aria-label="Foto 4"></button>
+            </div>
           </div>
         </div>
 
-        <!-- EQUIPO -->
-        <div class="team">
-          <h3 class="team__title">Nuestro equipo</h3>
-          <div class="team__grid">
-            <article class="member">
-              <figure class="ph ph--member" data-foto="equipo-1.jpg"><img src="img/fotos/equipo-1.jpg" alt="Especialista en implantología de Denta Genesis" width="800" height="1000" loading="lazy" decoding="async" onerror="this.remove()"><span>Foto<br><small>equipo-1.jpg · 800×1000</small></span></figure>
-              <h4>Dr./Dra. Nombre Apellido</h4>
-              <p>Implantología y cirugía oral · Nº col. 38/0000</p>
-            </article>
-            <article class="member">
-              <figure class="ph ph--member" data-foto="equipo-2.jpg"><img src="img/fotos/equipo-2.jpg" alt="Odontóloga/o de Denta Genesis" width="800" height="1000" loading="lazy" decoding="async" onerror="this.remove()"><span>Foto<br><small>equipo-2.jpg · 800×1000</small></span></figure>
-              <h4>Dr./Dra. Nombre Apellido</h4>
-              <p>Odontología general y estética · Nº col. 38/0000</p>
-            </article>
-            <article class="member">
-              <figure class="ph ph--member" data-foto="equipo-3.jpg"><img src="img/fotos/equipo-3.jpg" alt="Higienista dental de Denta Genesis" width="800" height="1000" loading="lazy" decoding="async" onerror="this.remove()"><span>Foto<br><small>equipo-3.jpg · 800×1000</small></span></figure>
-              <h4>Nombre Apellido</h4>
-              <p>Higienista dental</p>
-            </article>
+      </div>
+    </section>
+
+    <!-- ========== EQUIPO ========== -->
+    <section class="section section--ink team2" id="equipo" aria-labelledby="equipo-title">
+      <div class="wrap">
+        <div class="section__head section__head--center">
+          <p class="eyebrow">Nuestro equipo</p>
+          <h2 id="equipo-title">Tu sonrisa, en manos expertas</h2>
+          <p>Cirugía oral e implantología con años de experiencia y una atención personal, de la primera visita a la última revisión.</p>
+        </div>
+
+        <div class="team2__grid">
+          <a class="dr-card" href="dr-joseph-cesares.html">
+            <figure class="dr-card__photo"><img src="img/fotos/dr-joseph-cesares.jpg" style="object-position:38% 50%" alt="Dr. Joseph Cesares Márquez, cirujano oral e implantólogo de Denta Genesis" width="960" height="1200" loading="lazy" decoding="async"></figure>
+            <div class="dr-card__body">
+              <p class="dr-card__role">Cirugía oral e implantología</p>
+              <h3>Dr. Joseph Cesares Márquez</h3>
+              <p class="dr-card__text">Más de 12 años de experiencia en cirugía bucal, implantes y regeneración ósea guiada. Máster en Odontología Integrada y Cirugía Oral.</p>
+              <ul class="dr-card__tags"><li>+12 años</li><li>Implantes</li><li>Regeneración ósea</li></ul>
+              <span class="dr-card__link">Ver perfil completo <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+
+          <!-- SEGUNDO DOCTOR (oculto hasta tener sus datos; para mostrarlo, quitar los comentarios)
+          
+          <a class="dr-card" href="dr-doctor-2.html">
+            <figure class="dr-card__photo"><img src="img/fotos/dr-doctor-2.jpg" style="object-position:30% 50%" alt="Doctor de Denta Genesis en la recepción de la clínica" width="960" height="1200" loading="lazy" decoding="async"></figure>
+            <div class="dr-card__body">
+              <p class="dr-card__role">Especialidad pendiente</p>
+              <h3>Dr. Nombre Apellido</h3>
+              <p class="dr-card__text">Breve presentación del doctor: experiencia, formación principal y tratamientos en los que está especializado.</p>
+              <ul class="dr-card__tags"><li>Años de experiencia</li><li>Especialidad</li></ul>
+              <span class="dr-card__link">Ver perfil completo <span aria-hidden="true">→</span></span>
+            </div>
+          </a>
+          -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== RECORRIDO POR LA CLÍNICA ========== -->
+    <section class="section section--soft tour" id="instalaciones" aria-labelledby="tour-title">
+      <div class="wrap">
+        <div class="tour__head">
+          <div class="section__head">
+            <p class="eyebrow eyebrow--teal">Instalaciones</p>
+            <h2 id="tour-title">Un espacio pensado para que te sientas cómodo</h2>
+            <p>Gabinetes luminosos, equipamiento actual y una sala de espera tranquila en La Orotava.</p>
+          </div>
+          <div class="tour__nav" aria-hidden="true">
+            <button type="button" class="tour__arrow" data-dir="-1" tabindex="-1">←</button>
+            <button type="button" class="tour__arrow" data-dir="1" tabindex="-1">→</button>
           </div>
         </div>
+      </div>
+      <div class="tour__track" id="tourTrack" tabindex="0" aria-label="Galería de fotos de la clínica">
+        <figure class="tour__item"><img src="img/fotos/inst-fachada.jpg" alt="Fachada de la clínica dental Denta Genesis, especialistas en implantes dentales, en La Orotava" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Fachada</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-recepcion.jpg" alt="Recepción de la clínica dental Denta Genesis con el logotipo en la pared de madera" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Recepción</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-sala-espera.jpg" alt="Sala de espera de Denta Genesis en La Orotava, con sillones y televisión" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Sala de espera</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-zona-gabinetes.jpg" alt="Zona de gabinetes de la clínica Denta Genesis, con pasillo iluminado y salas acristaladas" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Zona de gabinetes</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-gabinete1-b.jpg" alt="Gabinete 1 de la clínica dental Denta Genesis, con sillón dental y pantalla" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete 1</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-gabinete1-a.jpg" alt="Gabinete 1 de Denta Genesis con equipo dental y radiología intraoral" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete 1</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-gabinete2-a.jpg" alt="Gabinete 2 de la clínica dental Denta Genesis, con sillón dental azul" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete 2</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-gabinete2-b.jpg" alt="Vista frontal del Gabinete 2 de Denta Genesis" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete 2</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-gabinete2-c.jpg" alt="Lámpara y equipo dental del Gabinete 2 de Denta Genesis" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Gabinete 2</figcaption></figure>
+        <figure class="tour__item"><img src="img/fotos/inst-radiologia.jpg" alt="Equipo de radiología dental digital (ortopantomógrafo) en la clínica Denta Genesis, La Orotava" width="900" height="1200" loading="lazy" decoding="async"><figcaption>Radiología digital</figcaption></figure>
       </div>
     </section>
 
@@ -414,7 +475,7 @@
             </div>
             <div>
               <h3>Teléfono</h3>
-              <p><a href="tel:+34922000000">922 000 000</a></p>
+              <p><a href="tel:+34822646609">822 646 609</a><br><a href="tel:+34641314797">641 314 797</a> <small>(móvil)</small></p>
               <h3>Email</h3>
               <p><a href="mailto:info@dentagenesis.es">info@dentagenesis.es</a></p>
             </div>
@@ -430,7 +491,7 @@
               <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.3 7 13 7 13s7-7.7 7-13a7 7 0 0 0-7-7Zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z"/></svg>
               Ver mapa
             </button>
-            <a class="map__link" href="https://www.google.com/maps/search/?api=1&query=Av.+Mayorazgo+de+Franchi+16+38300+La+Orotava" target="_blank" rel="noopener">Abrir en Google Maps ↗</a>
+            <a class="map__link" href="https://www.google.com/maps/place/Denta+Genesis/@28.3936367,-16.5281488,17z/data=!4m6!3m5!1s0xc402b489155e4c5:0xc60df680a07dbab4!8m2!3d28.3936367!4d-16.5281488!16s%2Fg%2F11zy31n7j4" target="_blank" rel="noopener">Abrir en Google Maps ↗</a>
           </div>
         </div>
 
@@ -483,7 +544,7 @@
       <div>
         <h4>Clínica dental en La Orotava</h4>
         <p>Av. Mayorazgo de Franchi, 16, Edf. Montymar, Local 1, 38300 La Orotava, Santa Cruz de Tenerife</p>
-        <p><a href="tel:+34922000000">922 000 000</a> · <a href="mailto:info@dentagenesis.es">info@dentagenesis.es</a></p>
+        <p><a href="tel:+34822646609">822 646 609</a> · <a href="tel:+34641314797">641 314 797</a> · <a href="mailto:info@dentagenesis.es">info@dentagenesis.es</a></p>
       </div>
       <div>
         <h4>Atendemos a pacientes de</h4>
@@ -501,10 +562,10 @@
   </footer>
 
   <!-- Botón flotante de llamada (móvil) -->
-  <a href="tel:+34922000000" class="fab" aria-label="Llamar a la clínica">
+  <a href="tel:+34822646609" class="fab" aria-label="Llamar a la clínica">
     <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"/></svg>
   </a>
 
-  <script src="js/main.js" defer></script>
+  <script src="js/main.js?v=5" defer></script>
 </body>
 </html>

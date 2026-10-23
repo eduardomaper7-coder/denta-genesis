@@ -27,7 +27,7 @@
   if (y) y.textContent = new Date().getFullYear();
 
   // Animaciones de entrada
-  var targets = document.querySelectorAll(".section__head, .impl__item, .steps li, .card, .about__text, .gallery, .member, .faq__list, .form, .contact__info");
+  var targets = document.querySelectorAll(".section__head, .impl__item, .steps li, .card, .about__text, .slider, .member, .doctor, .tour__track, .faq__list, .form, .contact__info");
   if ("IntersectionObserver" in window) {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
@@ -37,12 +37,44 @@
     targets.forEach(function (el) { el.classList.add("reveal"); io.observe(el); });
   }
 
+  // La clínica: fotos que rotan solas (pausa al pasar el ratón)
+  var slider = document.getElementById("slider");
+  if (slider) {
+    var slides = slider.querySelectorAll(".slider__slide");
+    var dots = slider.querySelectorAll(".slider__dots button");
+    var cur = 0, timer = null;
+    var still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    function show(n) {
+      slides[cur].classList.remove("is-active"); dots[cur].classList.remove("is-active");
+      cur = (n + slides.length) % slides.length;
+      slides[cur].classList.add("is-active"); dots[cur].classList.add("is-active");
+    }
+    function play() { if (!still) { stop(); timer = setInterval(function () { show(cur + 1); }, 4500); } }
+    function stop() { clearInterval(timer); }
+    dots.forEach(function (d, i) { d.addEventListener("click", function () { show(i); play(); }); });
+    slider.addEventListener("mouseenter", stop);
+    slider.addEventListener("mouseleave", play);
+    slides.forEach(function (sl) { var im = sl.querySelector("img"); if (im) im.loading = "eager"; });
+    play();
+  }
+
+  // Carrusel de instalaciones: flechas
+  var track = document.getElementById("tourTrack");
+  document.querySelectorAll(".tour__arrow").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var item = track.querySelector(".tour__item");
+      var step = item ? item.getBoundingClientRect().width + 20 : 320;
+      track.scrollBy({ left: step * Number(b.dataset.dir), behavior: "smooth" });
+    });
+  });
+
   // Mapa de Google bajo demanda
   var mapBtn = document.getElementById("mapBtn");
   if (mapBtn) {
     mapBtn.addEventListener("click", function () {
       var iframe = document.createElement("iframe");
-      iframe.src = "https://www.google.com/maps?q=" + encodeURIComponent("Av. Mayorazgo de Franchi 16, Edificio Montymar, 38300 La Orotava, Santa Cruz de Tenerife") + "&output=embed";
+      // Ficha de Google de Denta Genesis (coordenadas de la ficha)
+      iframe.src = "https://maps.google.com/maps?q=Denta+Genesis+La+Orotava&ll=28.3936367,-16.5281488&z=17&hl=es&output=embed";
       iframe.title = "Ubicación de Denta Genesis en La Orotava";
       iframe.loading = "lazy";
       iframe.referrerPolicy = "no-referrer-when-downgrade";
