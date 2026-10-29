@@ -2,9 +2,6 @@
 (function () {
   "use strict";
 
-  // Email de destino del formulario (cámbialo si es otro)
-  var EMAIL_CLINICA = "info@dentagenesis.es";
-
   // Cabecera: fondo al hacer scroll
   var header = document.querySelector(".header");
   function onScroll() { header.classList.toggle("is-scrolled", window.scrollY > 40); }
@@ -83,12 +80,17 @@
     });
   }
 
-  // Formulario: envío directo al email de la clínica con FormSubmit (formsubmit.co)
+  // Formulario: se envía a nuestra propia función /api/contacto (Vercel + Resend)
   var form = document.getElementById("form");
   var msg = document.getElementById("formMsg");
   if (form) {
+    var boton = form.querySelector("button[type=submit]");
+    var textoBoton = boton ? boton.textContent : "";
+    var enviando = false;
+
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+      if (enviando) return;
       var ok = true;
       form.querySelectorAll("[required]").forEach(function (f) {
         var valid = f.type === "checkbox" ? f.checked : f.value.trim() !== "";
@@ -98,46 +100,47 @@
       if (!ok) { msg.className = "form__msg is-error"; msg.textContent = "Revisa los campos obligatorios y acepta la política de privacidad."; return; }
 
       var d = new FormData(form);
-      if (d.get("_honey")) return; // robot de spam: no enviar
-
       var datos = {
-        "Nombre": d.get("nombre"),
-        "Teléfono": d.get("telefono"),
-        "Email": d.get("email") || "-",
-        "Tratamiento": d.get("tratamiento"),
-        "Mensaje": d.get("mensaje") || "-",
-        "_subject": "Nueva solicitud de cita web - " + d.get("nombre"),
-        "_template": "table",
-        "_captcha": "false"
+        nombre: d.get("nombre"),
+        telefono: d.get("telefono"),
+        email: d.get("email") || "",
+        tratamiento: d.get("tratamiento"),
+        mensaje: d.get("mensaje") || "",
+        privacidad: form.querySelector("[name=privacidad]").checked,
+        _honey: d.get("_honey") || ""
       };
-      if (d.get("email")) datos._replyto = d.get("email");
 
-      // Respuesta inmediata: FormSubmit tarda en contestar, así que el envío sigue en segundo plano
-      var copia = {};
-      form.querySelectorAll("input, select, textarea").forEach(function (f) {
-        if (f.name) copia[f.name] = f.type === "checkbox" ? f.checked : f.value;
-      });
-      form.reset();
-      msg.className = "form__msg is-ok";
-      msg.textContent = "¡Gracias! Hemos recibido tu solicitud y te llamaremos lo antes posible.";
+      enviando = true;
+      if (boton) { boton.disabled = true; boton.textContent = "Enviando…"; }
+      msg.className = "form__msg"; msg.textContent = "";
 
-      fetch("https://formsubmit.co/ajax/" + EMAIL_CLINICA, {
+      var ctrl = window.AbortController ? new AbortController() : null;
+      var t = ctrl ? setTimeout(function () { ctrl.abort(); }, 15000) : null;
+
+      fetch("/api/contacto", {
         method: "POST",
-        keepalive: true,
         headers: { "Content-Type": "application/json", "Accept": "application/json" },
-        body: JSON.stringify(datos)
+        body: JSON.stringify(datos),
+        signal: ctrl ? ctrl.signal : undefined
       })
-        .then(function (r) { return r.json(); })
-        .then(function (res) {
-          if (!res || String(res.success) !== "true") throw new Error(res && res.message);
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) throw new Error("envio"); }); })
+        .then(function () {
+          form.reset();
+          msg.className = "form__msg is-ok";
+          msg.textContent = "¡Gracias! Hemos recibido tu solicitud y te llamaremos lo antes posible.";
         })
         .catch(function () {
-          // Si falla, devolvemos los datos al formulario y avisamos
-          form.querySelectorAll("input, select, textarea").forEach(function (f) {
-            if (f.name && f.name in copia) { if (f.type === "checkbox") f.checked = copia[f.name]; else f.value = copia[f.name]; }
-          });
+          // Plan B: WhatsApp con los datos ya escritos, o llamada
+          var txt = "Hola, quiero pedir cita en Denta Genesis.\nNombre: " + datos.nombre + "\nTeléfono: " + datos.telefono +
+            "\nTratamiento: " + datos.tratamiento + (datos.mensaje ? "\nMensaje: " + datos.mensaje : "");
+          var wa = "https://wa.me/34641314797?text=" + encodeURIComponent(txt);
           msg.className = "form__msg is-error";
-          msg.innerHTML = "No se ha podido enviar. Inténtalo de nuevo o llámanos al <a href=\"tel:+34822646609\">822 646 609</a> o al <a href=\"tel:+34641314797\">641 314 797</a>.";
+          msg.innerHTML = "No se ha podido enviar. <a href=\"" + wa + "\" target=\"_blank\" rel=\"noopener\">Envíanos tu solicitud por WhatsApp</a> o llámanos al <a href=\"tel:+34822646609\">822 646 609</a>.";
+        })
+        .then(function () {
+          if (t) clearTimeout(t);
+          enviando = false;
+          if (boton) { boton.disabled = false; boton.textContent = textoBoton; }
         });
     });
   }

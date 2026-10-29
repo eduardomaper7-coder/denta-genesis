@@ -546,3 +546,5 @@ p { margin: 0 0 1em; }
 .form__msg.is-error { color: #c4553f; }
 .form__msg a { color: inherit; font-weight: 600; }
 .form button[disabled] { opacity: .7; cursor: wait; transform: none; }
+
+.btn:disabled { opacity: .65; cursor: wait; }
