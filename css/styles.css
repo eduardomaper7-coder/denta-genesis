@@ -323,7 +323,7 @@ p { margin: 0 0 1em; }
 /* Hero con foto + distintivo flotante */
 .hero__media { position: relative; }
 .ph--hero { box-shadow: 0 40px 80px -40px rgba(0,0,0,.7); }
-.ph--hero img { object-position: 30% 50%; }
+.ph--hero img { object-position: 50% 50%; }
 .hero__badge {
   position: absolute; left: -28px; bottom: 44px; z-index: 2;
   display: flex; align-items: center; gap: 14px;
