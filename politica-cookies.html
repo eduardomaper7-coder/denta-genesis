@@ -2,6 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <!-- Google Ads: solo se carga si el visitante acepta las cookies (js/consent.js) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'AW-18533062211');
+    window.DG_CONV_LLAMAR = 'AW-18533062211/boIaCIKl2q8dEMOsoIVF';
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+      if (a && window.DG_CONV_LLAMAR) gtag('event', 'conversion', { send_to: window.DG_CONV_LLAMAR, value: 1.0, currency: 'EUR' });
+    });
+  </script>
+  <script src="js/consent.js?v=1" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Política de cookies | Denta Genesis</title>
   <meta name="description" content="Política de cookies del sitio web de Denta Genesis.">
@@ -40,18 +54,18 @@
     <h2>¿Qué son las cookies?</h2>
     <p>Son pequeños archivos que los sitios web guardan en tu navegador para recordar información sobre tu visita.</p>
     <h2>Cookies que utiliza este sitio</h2>
-    <p>Este sitio web <strong>no instala cookies propias de análisis ni publicidad</strong>.</p>
-    <p>El mapa de ubicación de Google Maps solo se carga si pulsas el botón «Ver mapa». En ese momento, Google puede instalar sus propias cookies, sujetas a su <a href="https://policies.google.com/technologies/cookies?hl=es" rel="noopener" target="_blank">política de cookies</a>.</p>
+    <p><strong>Cookies técnicas.</strong> Guardamos en tu navegador si has aceptado o rechazado las cookies, para no volver a preguntarte en cada visita. Son necesarias y no requieren consentimiento.</p>
+    <p><strong>Cookies publicitarias de Google Ads (solo si las aceptas).</strong> Las utiliza Google Ireland Ltd. para medir la eficacia de nuestros anuncios, por ejemplo, saber si una persona que ha visto un anuncio nos ha llamado o ha enviado el formulario de cita. No se instalan hasta que pulsas «Aceptar» en el aviso de cookies. Más información en la <a href="https://policies.google.com/technologies/ads?hl=es" rel="noopener" target="_blank">política de publicidad de Google</a>.</p>
+    <p><strong>Google Maps.</strong> El mapa de ubicación solo se carga si pulsas el botón «Ver mapa». En ese momento, Google puede instalar sus propias cookies, sujetas a su <a href="https://policies.google.com/technologies/cookies?hl=es" rel="noopener" target="_blank">política de cookies</a>.</p>
     <p>Las fuentes tipográficas se sirven desde Google Fonts, que no instala cookies pero recibe la dirección IP del visitante para entregar el archivo.</p>
     <h2>Cómo gestionar las cookies</h2>
-    <p>Puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Firefox, Safari, Edge…).</p>
-    <p><em>Si en el futuro se añaden herramientas como Google Analytics, será necesario mostrar un aviso de consentimiento de cookies y actualizar esta página.</em></p>
+    <p>Puedes cambiar tu elección en cualquier momento desde <a href="#" data-cookies>Configurar cookies</a> (también en el pie de página). Además, puedes permitir, bloquear o eliminar las cookies desde la configuración de tu navegador (Chrome, Firefox, Safari, Edge…).</p>
     <p style="margin-top:3em"><a href="./">← Volver a la página principal</a></p>
   </main>
   <footer class="footer">
     <div class="wrap footer__legal">
       <p>© 2026 Denta Genesis · Av. Mayorazgo de Franchi, 16, Edf. Montymar, Local 1, 38300 La Orotava</p>
-      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a></nav>
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="#" data-cookies>Configurar cookies</a></nav>
     </div>
   </footer>
 </body>

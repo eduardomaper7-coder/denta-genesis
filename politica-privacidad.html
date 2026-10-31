@@ -2,6 +2,20 @@
 <html lang="es">
 <head>
   <meta charset="utf-8">
+  <!-- Google Ads: solo se carga si el visitante acepta las cookies (js/consent.js) -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('consent', 'default', { ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied' });
+    gtag('js', new Date());
+    gtag('config', 'AW-18533062211');
+    window.DG_CONV_LLAMAR = 'AW-18533062211/boIaCIKl2q8dEMOsoIVF';
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="tel:"]');
+      if (a && window.DG_CONV_LLAMAR) gtag('event', 'conversion', { send_to: window.DG_CONV_LLAMAR, value: 1.0, currency: 'EUR' });
+    });
+  </script>
+  <script src="js/consent.js?v=1" defer></script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Política de privacidad | Denta Genesis</title>
   <meta name="description" content="Política de privacidad y protección de datos de Denta Genesis.">
@@ -55,7 +69,7 @@
   <footer class="footer">
     <div class="wrap footer__legal">
       <p>© 2026 Denta Genesis · Av. Mayorazgo de Franchi, 16, Edf. Montymar, Local 1, 38300 La Orotava</p>
-      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a></nav>
+      <nav aria-label="Legal"><a href="aviso-legal.html">Aviso legal</a><a href="politica-privacidad.html">Privacidad</a><a href="politica-cookies.html">Cookies</a><a href="#" data-cookies>Configurar cookies</a></nav>
     </div>
   </footer>
 </body>

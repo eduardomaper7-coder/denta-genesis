@@ -126,6 +126,8 @@
         .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { if (!r.ok || !j.ok) throw new Error("envio"); }); })
         .then(function () {
           form.reset();
+          // Conversión Google Ads: envío de formulario correcto
+          if (typeof gtag === "function") gtag("event", "conversion", { send_to: "AW-18533062211/j7J_CPqa168dEMOsoIVF", value: 1.0, currency: "EUR" });
           msg.className = "form__msg is-ok";
           msg.textContent = "¡Gracias! Hemos recibido tu solicitud y te llamaremos lo antes posible.";
         })
