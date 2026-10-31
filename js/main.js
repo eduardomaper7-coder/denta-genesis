@@ -17,7 +17,27 @@
     burger.setAttribute("aria-expanded", String(open));
   });
   nav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeNav); });
-  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeNav(); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") { closeNav(); closeDrops(); } });
+
+  // Submenú de tratamientos
+  var drops = document.querySelectorAll(".nav__item--drop");
+  function closeDrops(except) {
+    drops.forEach(function (d) {
+      if (d === except) return;
+      d.classList.remove("is-open");
+      var b = d.querySelector(".nav__caret"); if (b) b.setAttribute("aria-expanded", "false");
+    });
+  }
+  drops.forEach(function (d) {
+    var b = d.querySelector(".nav__caret");
+    b.addEventListener("click", function (e) {
+      e.stopPropagation();
+      closeDrops(d);
+      var open = d.classList.toggle("is-open");
+      b.setAttribute("aria-expanded", String(open));
+    });
+  });
+  document.addEventListener("click", function (e) { if (!e.target.closest(".nav__item--drop")) closeDrops(); });
 
   // Año actual en el pie
   var y = document.getElementById("year");
