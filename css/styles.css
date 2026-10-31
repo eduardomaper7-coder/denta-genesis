@@ -548,3 +548,7 @@ p { margin: 0 0 1em; }
 .form button[disabled] { opacity: .7; cursor: wait; transform: none; }
 
 .btn:disabled { opacity: .65; cursor: wait; }
+
+/* Ordenador: sin botón de llamar (solo en móvil/táctil) */
+@media (min-width: 901px) { .header__phone { display: none; } }
+@media (hover: hover) and (pointer: fine) { .fab { display: none !important; } }
