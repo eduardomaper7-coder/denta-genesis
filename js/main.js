@@ -168,24 +168,28 @@
   }
 })();
 
-/* WhatsApp flotante: en móvil aparece solo cuando el botón de WhatsApp de la portada deja de verse */
+/* WhatsApp flotante: en móvil aparece solo cuando el botón de WhatsApp de la portada deja de verse.
+   Cada vez que aparece muestra el mensaje unos segundos. Espera a que se cierre el aviso de cookies. */
 (function () {
   var fab = document.getElementById("waFloat");
   if (!fab) return;
   var hero = document.querySelector("[data-wa-hero]");
   var mq = window.matchMedia("(max-width: 900px)");
-  var heroVisible = !!hero, msgShown = false, msgTimer;
+  var heroVisible = !!hero, isOn = false, msgTimer, ready = false;
 
   function showMsg() {
-    if (msgShown) return;
-    msgShown = true;
+    clearTimeout(msgTimer);
     fab.classList.add("is-msg");
-    msgTimer = setTimeout(function () { fab.classList.remove("is-msg"); }, 5000);
+    msgTimer = setTimeout(function () { fab.classList.remove("is-msg"); }, 6000);
   }
   function update() {
-    var on = !(mq.matches && hero && heroVisible);
+    if (!ready) return;
+    var cookiesAbierto = !!document.getElementById("ck");
+    var on = !cookiesAbierto && !(mq.matches && hero && heroVisible);
+    if (on === isOn) return;
+    isOn = on;
     fab.classList.toggle("is-on", on);
-    if (on) showMsg(); else { fab.classList.remove("is-msg"); }
+    if (on) showMsg(); else { clearTimeout(msgTimer); fab.classList.remove("is-msg"); }
   }
 
   if (hero && "IntersectionObserver" in window) {
@@ -196,7 +200,7 @@
   } else {
     heroVisible = false;
   }
+  if ("MutationObserver" in window) new MutationObserver(update).observe(document.body, { childList: true });
   if (mq.addEventListener) mq.addEventListener("change", update); else if (mq.addListener) mq.addListener(update);
-  setTimeout(update, 900);
+  setTimeout(function () { ready = true; update(); }, 900);
 })();
-
