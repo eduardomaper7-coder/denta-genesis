@@ -167,3 +167,36 @@
     });
   }
 })();
+
+/* WhatsApp flotante: en móvil aparece solo cuando el botón de WhatsApp de la portada deja de verse */
+(function () {
+  var fab = document.getElementById("waFloat");
+  if (!fab) return;
+  var hero = document.querySelector("[data-wa-hero]");
+  var mq = window.matchMedia("(max-width: 900px)");
+  var heroVisible = !!hero, msgShown = false, msgTimer;
+
+  function showMsg() {
+    if (msgShown) return;
+    msgShown = true;
+    fab.classList.add("is-msg");
+    msgTimer = setTimeout(function () { fab.classList.remove("is-msg"); }, 5000);
+  }
+  function update() {
+    var on = !(mq.matches && hero && heroVisible);
+    fab.classList.toggle("is-on", on);
+    if (on) showMsg(); else { fab.classList.remove("is-msg"); }
+  }
+
+  if (hero && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (entries) {
+      heroVisible = entries[0].isIntersecting;
+      update();
+    }, { threshold: 0 }).observe(hero);
+  } else {
+    heroVisible = false;
+  }
+  if (mq.addEventListener) mq.addEventListener("change", update); else if (mq.addListener) mq.addListener(update);
+  setTimeout(update, 900);
+})();
+
