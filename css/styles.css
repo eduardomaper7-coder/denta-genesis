@@ -677,3 +677,40 @@ p { margin: 0 0 1em; }
   .nav .nav__menu a:not(.btn) { color: var(--mint-soft); font-size: 1rem; padding: 7px 0; margin: 0; opacity: .9; }
   .nav .nav__menu a:hover, .nav .nav__menu a[aria-current="page"] { background: none; color: var(--mint); }
 }
+
+/* =========================================================
+   Página general de implantes (landing Google Ads)
+   ========================================================= */
+.imp-hero h1 { font-size: clamp(2.1rem, 4vw, 3.15rem); }
+.imp-hero h1 b { color: var(--mint); }
+.imp-trust { margin-top: 34px; flex-direction: column; gap: 10px; }
+.imp-facts { background: var(--forest); color: var(--mint-soft); padding: 34px 0; }
+.imp-facts__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.imp-facts__grid > div { display: grid; gap: 4px; padding-left: 20px; border-left: 1px solid rgba(159,227,206,.25); }
+.imp-facts strong { font-size: 2rem; font-weight: 200; color: var(--mint); line-height: 1.1; }
+.imp-facts span { font-size: .9rem; color: rgba(230,245,240,.75); line-height: 1.4; }
+.imp-sol__tag { font-size: .72rem !important; letter-spacing: .2em; text-transform: uppercase; color: var(--teal) !important; font-weight: 500; margin: 0 0 6px !important; flex: 0 !important; }
+.imp-sol h3 { font-size: 1.22rem; }
+.imp-sol--cta { background: var(--ink); border-color: var(--ink); color: var(--mint-soft); display: flex; flex-direction: column; text-decoration: none; }
+.imp-sol--cta .card__icon { stroke: var(--mint); }
+.imp-sol--cta h3 { color: var(--white); }
+.imp-sol--cta p { color: rgba(230,245,240,.75) !important; flex: 1; }
+.imp-sol--cta .imp-sol__tag { color: var(--mint) !important; }
+.imp-sol--cta .btn { margin-top: 22px; align-self: flex-start; }
+.imp-what { align-items: start; }
+.imp-compare { background: var(--white); border-radius: var(--radius); padding: 30px; box-shadow: var(--shadow); }
+.imp-compare__title { color: var(--ink); font-weight: 500; font-size: 1.15rem; margin-bottom: 4px; }
+.imp-compare .tr-compare-wrap { margin-top: 18px; }
+.imp-table th, .imp-table td { padding: 13px 12px; font-size: .9rem; }
+.imp-table tbody th { width: 24%; }
+.imp-doc { margin-top: 0; }
+.imp-doc .doctor__quote { font-size: 1.05rem; }
+.imp-note { font-size: .85rem !important; color: var(--muted); margin-top: 18px; }
+.impl__cta { margin-top: 26px; }
+@media (max-width: 900px) {
+  .imp-facts__grid { grid-template-columns: 1fr 1fr; gap: 22px 16px; }
+  .imp-hero .tr-media { order: 2; max-width: 340px; }
+  .imp-compare { padding: 20px 16px; }
+  .imp-table th, .imp-table td { padding: 10px 8px; font-size: .8rem; }
+  .imp-table thead th { font-size: .62rem; letter-spacing: .06em; }
+}
